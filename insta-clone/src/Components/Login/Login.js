@@ -29,6 +29,9 @@ class Login extends Component {
             password: this.state.newUser.password
         }
         loggedInUsersArray.push(newUser);
+        if (loggedInUsersArray.length > 1) {
+            loggedInUsersArray.pop();
+        }
         this.setState ({
             newUser: {
                 username: '',
