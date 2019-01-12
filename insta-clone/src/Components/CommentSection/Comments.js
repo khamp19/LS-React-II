@@ -29,19 +29,59 @@ class Comments extends Component {
             username: this.state.newComment.username,
             text: this.state.newComment.text
         };
-        console.log('new comment', newComment);
         commentListArray.push(newComment);
         this.setState({
-            commentList: commentListArray,
+            comments: commentListArray,
             newComment: {
                 username: 'a_new_user',
                 text: ''
             }
         })
     }
+
+    //from tutorial
+    //save session state to localstorage
+    // saveStateToLocalStorage() {
+    //     for (let key in this.state) {
+    //         localStorage.setItem(key, JSON.stringify(this.state[key]))
+    //     }
+    // }
+    // //set localstorage as component state
+    // //this is the name of the method on LocalStorage
+    // hydrateStateWithLocalStorage() {
+    //     for(let key in this.state) {
+    //         if(localStorage.hasOwnProperty(key)) {
+    //             let value = localStorage.getItem(key);
+    //             try {
+    //                 value = JSON.parse(value);
+    //                 this.setState({ [key]: value })
+    //             }
+    //             catch(e) {
+    //                 this.setState({ [key]: value})
+    //             }
+    //         }
+    //     }
+    // }
+
+    // //add a componentDidMount() to render the data from LocalStorage
+    // componentDidMount() {
+    //     this.hydrateStateWithLocalStorage();
+    //     window.addEventListener(
+    //         "beforeunload",
+    //         this.saveStateToLocalStorage.bind(this)
+    //     );
+    // }
+
+    // //add a componentWillUnmount() to update state saved to LocalStorage
+    // componentWillUnmount() {
+    //     window.removeEventListener(
+    //         "beforeunload",
+    //         this.saveStateToLocalStorage()
+    //     );
+    // }
     
     render() {
-        const { comments } = this.props;
+        const { comments } = this.state;
         const { text } = this.state.newComment;
         return (
             <div className="Comments">
@@ -77,4 +117,3 @@ class Comments extends Component {
 }
                 
 export default Comments;
-                
